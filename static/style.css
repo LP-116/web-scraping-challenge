@@ -1,0 +1,32 @@
+
+h1 {color:navy;
+    font: bold}
+
+#mars-image {
+    height: 180px;
+    width: 200px;
+    padding: 2px 16px;
+}
+
+#mars-title {
+    font-size: large;
+    color:navy;
+    font-weight: 700;
+}
+
+#feature {
+    height: 400px;
+    width: 450px;
+}
+
+.card { max-width: 20rem;
+
+
+}
+grid-item {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    }
+    
+    

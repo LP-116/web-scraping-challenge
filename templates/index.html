@@ -7,7 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mars Data</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+  <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='bootstrap.min.css') }}"> -->
+
 </head>
+
 
 <body>
     <div class="container">
@@ -26,34 +30,66 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <hr>
+        <div class="row">
             <div class="col-md-6">
                 <div class="media-body">
                     <h2>Featured Mars Image</h2>
-                    <img src="{{ mars.featured_image }}">
+                    <img id="feature" src="{{ mars.featured_image }}">
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="media-body">
-                    <h2>Mars Facts</h2>
-                          <p>{{mars.facts | safe}}</p>
-                        </div>
-                      </div> 
-                      
-            <div class="col-md-6">
-                <div class="media-body">
-                    <h2>Mars hemisphere images</h2>
-                    {% for hem in mars.hemispheres %}
-                     <img src="{{ hem.img_url }}">
-                     <li> {{ hem.title }} </li>
-                     {% endfor %}
+                    <h2> Mars Facts</h2>
+                    <div class="card-body table-responsive ">
+                     {{mars.facts | safe}}
+                    </table>
                     </div>
+                </div> 
+            </div> 
+        </div>
+        <hr>
+        <div class="container">
+            <h2>Mars hemisphere images</h2>
+            <br>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card border-primary mb-3 text-center" style="max-width: 15rem;">
+                        <grid-item><img id="mars-image" src="{{ mars.hemispheres[0].img_url }}" class="rounded"></grid-item>
+                        <br><p id="mars-title" >{{ mars.hemispheres[0].title }}</p><br>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card border-primary mb-3 text-center" style="max-width: 15rem;">
+                        <grid-item><img id="mars-image" src="{{ mars.hemispheres[1].img_url }}" class="rounded"></grid-item>
+                        <br> <p id="mars-title" >{{ mars.hemispheres[1].title }} </p>  
+                        <br>
+                     </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card border-primary mb-3 text-center" style="max-width: 15rem;">
+                        <grid-item><img id="mars-image" src="{{ mars.hemispheres[2].img_url }}" class="rounded"></grid-item>
+                        <br> <p id="mars-title" > {{ mars.hemispheres[2].title }} </p>  <br> 
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card border-primary mb-3 text-center" style="max-width: 15rem;">
+                        <grid-item><img id="mars-image" src="{{ mars.hemispheres[3].img_url }}" class="rounded"></grid-item> 
+                        <br> <p id="mars-title" > {{ mars.hemispheres[3].title }} </p><br>   
+                    </div>
+                </div>
+
                 </div>         
-                
+            </div>    
             
 
             
-            </div>
+            
         </div>
 
 

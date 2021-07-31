@@ -84,7 +84,7 @@ def mars_facts():
 
         facts_df = facts_table[1:].reset_index()
 
-        facts_table = facts_df.to_html()
+        facts_table = facts_df.to_html(border="2", classes="table table-sm table-striped table-info font-weight-light text-align-left", col_space='200px')
 
     except AttributeError:
         return None
