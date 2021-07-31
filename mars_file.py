@@ -29,9 +29,6 @@ def scrape_all():
 
 def mars_news(browser):
 
-    executable_path = {'executable_path': ChromeDriverManager().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
-
     url = "https://redplanetscience.com/"
     browser.visit(url)
 
@@ -47,14 +44,10 @@ def mars_news(browser):
     except AttributeError:
         return None, None
     
-    browser.quit()
     return news_title, news_para
 
 
 def space_image(browser):
-
-    executable_path = {'executable_path': ChromeDriverManager().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
 
     image_url = "https://spaceimages-mars.com/"
     browser.visit(image_url)
@@ -75,19 +68,9 @@ def space_image(browser):
     except AttributeError:
         return None
     
-    browser.quit()
     return featured_image_url
 
 def mars_facts():
-
-    executable_path = {'executable_path': ChromeDriverManager().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
-
-    image_url = "https://spaceimages-mars.com/"
-    browser.visit(image_url)
-
-    html = browser.html
-    soup = bs(html, 'html.parser') 
     
     try:
 
@@ -106,14 +89,11 @@ def mars_facts():
     except AttributeError:
         return None
 
-    browser.quit()
+    # browser.quit()
     return facts_table
 
 
 def mars_hemispheres(browser):
-
-    executable_path = {'executable_path': ChromeDriverManager().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
     
     all_images_url = "https://marshemispheres.com/"
     browser.visit(all_images_url)
@@ -146,6 +126,5 @@ def mars_hemispheres(browser):
     
     except AttributeError:
         return None
-    
-    browser.quit()
+
     return hemisphere_image_urls
