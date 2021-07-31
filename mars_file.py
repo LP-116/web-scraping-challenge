@@ -7,7 +7,7 @@ from splinter import Browser
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-def scrape():
+def scrape_all():
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False)
 
@@ -18,7 +18,7 @@ def scrape():
         "news_paragraph": news_para,
         "featured_image": space_image(browser),
         "facts": mars_facts(),
-        "hemisphers": mars_hemispheres(browser),
+        "hemispheres": mars_hemispheres(browser),
         "last_modified": dt.datetime.now()
     }
 
@@ -28,6 +28,9 @@ def scrape():
 
 
 def mars_news(browser):
+
+    executable_path = {'executable_path': ChromeDriverManager().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
 
     url = "https://redplanetscience.com/"
     browser.visit(url)
@@ -44,11 +47,14 @@ def mars_news(browser):
     except AttributeError:
         return None, None
     
+    browser.quit()
     return news_title, news_para
 
 
 def space_image(browser):
 
+    executable_path = {'executable_path': ChromeDriverManager().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
 
     image_url = "https://spaceimages-mars.com/"
     browser.visit(image_url)
@@ -68,11 +74,14 @@ def space_image(browser):
   
     except AttributeError:
         return None
-
-    return featured_image_url()
+    
+    browser.quit()
+    return featured_image_url
 
 def mars_facts():
 
+    executable_path = {'executable_path': ChromeDriverManager().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
 
     image_url = "https://spaceimages-mars.com/"
     browser.visit(image_url)
@@ -92,15 +101,19 @@ def mars_facts():
 
         facts_df = facts_table[1:].reset_index()
 
-        facts_df.to_html()
+        facts_table = facts_df.to_html()
 
     except AttributeError:
         return None
 
-    return facts_df.to_html()
+    browser.quit()
+    return facts_table
 
 
 def mars_hemispheres(browser):
+
+    executable_path = {'executable_path': ChromeDriverManager().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
     
     all_images_url = "https://marshemispheres.com/"
     browser.visit(all_images_url)
@@ -131,7 +144,8 @@ def mars_hemispheres(browser):
             
             browser.back()
     
-     except AttributeError:
+    except AttributeError:
         return None
     
+    browser.quit()
     return hemisphere_image_urls
