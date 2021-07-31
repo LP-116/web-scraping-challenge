@@ -25,6 +25,7 @@
                         <p>{{ mars.news_paragraph }}</p>
                     </div>
                 </div>
+            </div>
             <div class="col-md-6">
                 <div class="media-body">
                     <h2>Featured Mars Image</h2>
@@ -35,9 +36,21 @@
             <div class="col-md-6">
                 <div class="media-body">
                     <h2>Mars Facts</h2>
-                    {{ mars.facts | safe }}
-                </div>
-            </div>
+                          <p>{{mars.facts | safe}}</p>
+                        </div>
+                      </div> 
+                      
+            <div class="col-md-6">
+                <div class="media-body">
+                    <h2>Mars hemisphere images</h2>
+                    {% for hem in mars.hemispheres %}
+                     <img src="{{ hem.img_url }}">
+                     <li> {{ hem.title }} </li>
+                     {% endfor %}
+                    </div>
+                </div>         
+                
+            
 
             
             </div>
