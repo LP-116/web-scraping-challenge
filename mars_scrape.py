@@ -81,6 +81,7 @@ def mars_facts():
         facts_table.columns=["Description", "Mars", "Earth"]
 
         facts_table.set_index("Description", inplace=True)
+        facts_table = facts_table.drop(facts_table.index[[0]])
        
         facts_table_html = facts_table.to_html(justify="left", border="1", classes="table table-sm table-striped table-dark font-weight-light text-align-left", col_space='150px')
 
