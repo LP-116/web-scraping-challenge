@@ -78,19 +78,16 @@ def mars_facts():
 
         facts_table = pd.read_html(facts_url)[0]
 
-        facts_table.columns = facts_table.iloc[0]
-  
-        facts_table.set_index("Mars - Earth Comparison", inplace=True)
+        facts_table.columns=["Description", "Mars", "Earth"]
 
-        facts_df = facts_table[1:].reset_index()
-
-        facts_table = facts_df.to_html(border="2", classes="table table-sm table-striped table-info font-weight-light text-align-left", col_space='200px')
+        facts_table.set_index("Description", inplace=True)
+       
+        facts_table_html = facts_table.to_html(justify="left", border="2", classes="table table-sm table-striped table-info font-weight-light text-align-left", col_space='150px')
 
     except AttributeError:
         return None
 
-    # browser.quit()
-    return facts_table
+    return facts_table_html
 
 
 def mars_hemispheres(browser):
