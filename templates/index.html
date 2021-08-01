@@ -17,16 +17,16 @@
     <div class="container">
         <div class="jumbotron text-center">
             <h1>Mission to Mars</h1>
-            <p><a class="btn btn-primary btn-lg" href="../scrape" role="button">Scrape New Data</a></p>
+            <p><a class="btn btn-dark btn-lg" href="../scrape" role="button">Scrape New Data</a></p>
         </div>
 
         <div class="row" id="news">
             <div class="col-md-12">
-                <div class="media">
-                    <div class="media-body">
-                        <h2>Latest Mars News</h2>
-                        <h4 class="media-heading"> {{ mars.news_title }}</h4>
-                        <p>{{ mars.news_paragraph }}</p>
+                <div class="news">
+                    <div class="news-body">
+                    <grid-item><h2>Latest Mars News</h2></grid-item>
+                    <grid-item><h4> {{ mars.news_title }}</h4></grid-item>
+                    <grid-item><p>{{ mars.news_paragraph }}</p></grid-item>
                     </div>
                 </div>
             </div>
@@ -34,17 +34,17 @@
         <hr>
         <div class="row">
             <div class="col-md-6">
-                <div class="media-body">
-                    <h2>Featured Mars Image</h2>
-                    <img id="feature" src="{{ mars.featured_image }}">
+                <div class="news-body">
+                    <grid-item><h2>Featured Mars Image</h2></grid-item>
+                    <grid-item><img id="feature" src="{{ mars.featured_image }}"></grid-item>
                 </div>
             </div>
 
             <div class="col-md-6">
-                <div class="media-body">
-                    <h2> Mars Facts</h2>
+                <div class="news-body">
+                    <grid-item><h2 id="facts"> Mars Facts</h2></grid-item>
                     <div class="card-body table-responsive ">
-                     {{mars.facts | safe}}
+                    <grid-item>  {{mars.facts | safe}} </grid-item>
                     </table>
                     </div>
                 </div> 
@@ -52,7 +52,7 @@
         </div>
         <hr>
         <div class="container">
-            <h2>Mars hemisphere images</h2>
+            <grid-item><h2>Mars hemisphere images</h2></grid-item>
             <br>
             <div class="row">
                 <div class="col-md-3">
