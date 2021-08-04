@@ -1,3 +1,7 @@
+# The scrape file used in the app.py
+# Based off the mission_to_mars.ipynb workbook
+# 5 functions are defined.
+
 import os
 from bs4 import BeautifulSoup as bs
 import requests
@@ -6,6 +10,11 @@ import datetime as dt
 from splinter import Browser
 from webdriver_manager.chrome import ChromeDriverManager
 
+
+# This function brings all other function results together.
+# It starts by establishing the splinter connection.
+# All results from other functions are returned in a data dictionary.
+# A timestamp stamp is also added into the dictionary.
 
 def scrape_all():
     executable_path = {'executable_path': ChromeDriverManager().install()}
@@ -27,6 +36,8 @@ def scrape_all():
     return data
 
 
+# This function scrapes the mars news title and paragraph.
+
 def mars_news(browser):
 
     url = "https://redplanetscience.com/"
@@ -46,6 +57,8 @@ def mars_news(browser):
     
     return news_title, news_para
 
+
+# This function scrapes the featured image.
 
 def space_image(browser):
 
@@ -70,6 +83,11 @@ def space_image(browser):
     
     return featured_image_url
 
+
+# This function scrapes the mars facts table using the pandas read html method.
+# Note the additional attributes adding into the facts_table.to_html line.
+# These attributes create a nice looking table for the website.
+
 def mars_facts():
     
     try:
@@ -90,6 +108,8 @@ def mars_facts():
 
     return facts_table_html
 
+
+# This final function returns the mars hemispheres titles and url dictionary in a list.
 
 def mars_hemispheres(browser):
     
