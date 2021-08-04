@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Set up and links -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +9,19 @@
   <title>Mars Data</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
-  <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='bootstrap.min.css') }}"> -->
 
 </head>
 
 
 <body>
     <div class="container">
-        <div class="jumbotron text-center">
+        <div class="jumbotron text-center"> <!-- Start of header/button section -->
             <h1>Mission to Mars</h1>
             <p><a class="btn btn-dark btn-lg" href="../scrape" role="button">Scrape New Data</a></p>
             <p><a id="date"><span style="color: orange" > <b>Last updated:</b></span> {{ mars.last_modified }} </a></p>
         </div>
 
-        <div class="row" id="news">
+        <div class="row" id="news"> <!-- Start of news section -->
             <div class="col-md-12">
                 <div class="news">
                     <div class="news-body">
@@ -31,9 +31,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> <!-- End of news section -->
         <hr>
-        <div class="row">
+        <div class="row"> <!-- Start of image and facts section -->
             <div class="col-md-6">
                 <div class="news-body">
                     <grid-item><h2>Featured Mars Image</h2></grid-item>
@@ -50,51 +50,26 @@
                     </div>
                 </div> 
             </div> 
-        </div>
+        </div> <!-- End of featured image and facts section -->
         <hr>
         <div class="container">
             <grid-item><h2>Mars hemisphere images</h2></grid-item>
             <br>
             <div class="row">
+
+                {% for hemisphere in mars.hemispheres%} 
                 <div class="col-md-3">
                     <div class="card border-primary mb-3 text-center" style="max-width: 15rem;">
-                        <grid-item><img id="mars-image" src="{{ mars.hemispheres[0].img_url }}" class="rounded"></grid-item>
-                        <br><p id="mars-title" >{{ mars.hemispheres[0].title }}</p><br>
+                        <grid-item><img id="mars-image" src="{{ hemisphere.img_url }}" class="rounded"></grid-item>
+                        <br><p id="mars-title" >{{ hemisphere.title }}</p><br>
                     </div>
                 </div>
+                {% endfor %}
 
-                <div class="col-md-3">
-                    <div class="card border-primary mb-3 text-center" style="max-width: 15rem;">
-                        <grid-item><img id="mars-image" src="{{ mars.hemispheres[1].img_url }}" class="rounded"></grid-item>
-                        <br> <p id="mars-title" >{{ mars.hemispheres[1].title }} </p>  
-                        <br>
-                     </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card border-primary mb-3 text-center" style="max-width: 15rem;">
-                        <grid-item><img id="mars-image" src="{{ mars.hemispheres[2].img_url }}" class="rounded"></grid-item>
-                        <br> <p id="mars-title" > {{ mars.hemispheres[2].title }} </p>  <br> 
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card border-primary mb-3 text-center" style="max-width: 15rem;">
-                        <grid-item><img id="mars-image" src="{{ mars.hemispheres[3].img_url }}" class="rounded"></grid-item> 
-                        <br> <p id="mars-title" > {{ mars.hemispheres[3].title }} </p><br>   
-                    </div>
-                </div>
-
-                </div>         
-            </div>    
+                </div> <!-- End of row class -->        
+            </div> <!-- End of hemisphere container -->
             
-
-            
-            
-        </div>
-
-
-    </div>
+        </div> <!-- End of main container -->
 
 </body>
 </html>

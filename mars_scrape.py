@@ -11,31 +11,6 @@ from splinter import Browser
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-# This function brings all other function results together.
-# It starts by establishing the splinter connection.
-# All results from other functions are returned in a data dictionary.
-# A timestamp stamp is also added into the dictionary.
-
-def scrape_all():
-    executable_path = {'executable_path': ChromeDriverManager().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
-
-    news_title, news_para = mars_news(browser)
-
-    data = {
-        "news_title": news_title,
-        "news_paragraph": news_para,
-        "featured_image": space_image(browser),
-        "facts": mars_facts(),
-        "hemispheres": mars_hemispheres(browser),
-        "last_modified": dt.datetime.now()
-    }
-
-    browser.quit()
-
-    return data
-
-
 # This function scrapes the mars news title and paragraph.
 
 def mars_news(browser):
@@ -141,8 +116,36 @@ def mars_hemispheres(browser):
             hemisphere_image_urls.append({"title": title, "img_url": img_url})
             
             browser.back()
-    
+        
     except AttributeError:
         return None
 
     return hemisphere_image_urls
+
+
+# This function brings all other function results together.
+# It starts by establishing the splinter connection.
+# All results from other functions are returned in a data dictionary.
+# A timestamp stamp is also added into the dictionary.
+
+def scrape_all():
+    executable_path = {'executable_path': ChromeDriverManager().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
+
+    news_title, news_para = mars_news(browser)
+
+    data = {
+        "news_title": news_title,
+        "news_paragraph": news_para,
+        "featured_image": space_image(browser),
+        "facts": mars_facts(),
+        "hemispheres": mars_hemispheres(browser),
+        "last_modified": dt.datetime.now()
+    }
+
+    browser.quit()
+
+    return data
+
+
+
