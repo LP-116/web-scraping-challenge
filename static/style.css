@@ -3,7 +3,7 @@ body {background: whitesmoke}
 
 .container {background-color: lightgrey;}
 
-h1 {color:#ff3333;
+h1 {color:white;
     font: bold;
     font-size:50px}
 
@@ -14,9 +14,10 @@ hr {height: 1px;
 
 p {align-content: center;}
 
-.jumbotron {background-color:black}
+#date {color: whitesmoke;}
 
-/* #facts {align-items: center;} */
+.jumbotron {background-color: #0047b3}
+
 
 .btn {color:orange}
 
