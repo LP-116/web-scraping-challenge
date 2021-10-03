@@ -1,10 +1,10 @@
 # Web Scraping Challenge
-## Web Scraping Homework - Mission to Mars
+## Mission to Mars
 ---
 
 ### Task
 
-This assignment contained two parts. The first part involved scraping 4 different websites using Jupyter Notebook, BeautifulSoup, Pandas and Splinter.
+This challenge contained two parts. The first part involved scraping 4 different websites using Jupyter Notebook, BeautifulSoup, Pandas and Splinter.
 The second part involved using MongoDB with Flask templating to create a new HTML page that displays all of the information that was scraped from the URL's in part 1.
 
 ---
